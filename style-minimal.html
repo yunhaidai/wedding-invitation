@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>代云海 & 冯馨瑶 婚礼邀请函 - 简约现代风</title>
+    <title>代云海 & 冯馨瑶 婚礼邀请函</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
@@ -154,6 +154,21 @@
 
         .person { text-align: center; }
 
+        .person-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 12px;
+            border: 1px solid #e0d5c5;
+        }
+
+        .person-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .person-name {
             font-size: 20px;
             font-weight: 400;
@@ -224,19 +239,44 @@
             color: #fff;
         }
 
-        /* Photo placeholder */
-        .photo-placeholder {
+        /* Photo gallery */
+        .photo-gallery {
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .photo-hero {
             width: 100%;
-            max-width: 300px;
-            height: 200px;
-            margin: 20px auto;
-            border: 1px solid #e0d5c5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #bbb;
-            font-size: 13px;
-            letter-spacing: 2px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .photo-hero img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .photo-grid .photo-item {
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .photo-grid .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .photo-grid .photo-item.portrait {
+            grid-row: span 2;
         }
 
         /* Footer */
@@ -287,7 +327,7 @@
             <div class="cover-names">代云海</div>
             <div class="cover-ampersand">&</div>
             <div class="cover-names">冯馨瑶</div>
-            <div class="cover-date">2026 . 11 . 11</div>
+            <div class="cover-date">2026 . 11 . 11（星期三）</div>
             <div class="cover-lunar">农历丙午年十月初三</div>
             <div class="scroll-hint">SCROLL DOWN</div>
         </section>
@@ -302,7 +342,8 @@
                 农历丙午年十月初三<br>
                 为新郎 代云海 新娘 冯馨瑶<br>
                 举行结婚典礼<br><br>
-                恭请光临
+                恭请光临<br>
+                共鉴此情 同贺佳缘
             </div>
         </section>
 
@@ -312,11 +353,13 @@
             <div class="section-line"></div>
             <div class="couple-container">
                 <div class="person">
+                    <div class="person-avatar"><img src="photos/avatar-groom.jpg" alt="代云海"></div>
                     <div class="person-name">代云海</div>
                     <div class="person-label">新郎</div>
                 </div>
                 <div class="couple-divider">&</div>
                 <div class="person">
+                    <div class="person-avatar"><img src="photos/avatar-bride.jpg" alt="冯馨瑶"></div>
                     <div class="person-name">冯馨瑶</div>
                     <div class="person-label">新娘</div>
                 </div>
@@ -352,7 +395,28 @@
             <div class="section-label">GALLERY</div>
             <div class="section-title">甜蜜瞬间</div>
             <div class="section-line"></div>
-            <div class="photo-placeholder">婚纱照即将更新</div>
+            <div class="photo-gallery">
+                <div class="photo-hero">
+                    <img src="photos/0N4A9362.jpg" alt="代云海 & 冯馨瑶" loading="lazy">
+                </div>
+                <div class="photo-grid">
+                    <div class="photo-item portrait">
+                        <img src="photos/0N4A9429-韶华摆台.jpg" alt="花拱门下" loading="lazy">
+                    </div>
+                    <div class="photo-item">
+                        <img src="photos/0N4A9721.jpg" alt="花园粉色礼服" loading="lazy">
+                    </div>
+                    <div class="photo-item">
+                        <img src="photos/0N4A9376.jpg" alt="携手相望" loading="lazy">
+                    </div>
+                    <div class="photo-item portrait">
+                        <img src="photos/0N4A9523-喜字九宫格.jpg" alt="中式礼服" loading="lazy">
+                    </div>
+                    <div class="photo-item">
+                        <img src="photos/0N4A9425.jpg" alt="教堂合影" loading="lazy">
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="footer fade-in">
