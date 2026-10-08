@@ -259,21 +259,34 @@
         }
 
         .photo-grid {
-            column-count: 2;
-            column-gap: 12px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
         }
 
         .photo-grid .photo-item {
             border-radius: 4px;
             overflow: hidden;
-            break-inside: avoid;
-            margin-bottom: 12px;
         }
 
         .photo-grid .photo-item img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
+        }
+
+        .photo-grid .photo-item.landscape {
+            height: 200px;
+        }
+
+        .photo-grid .photo-item.portrait {
+            height: 260px;
+        }
+
+        .photo-grid .photo-item.full {
+            grid-column: span 2;
+            height: 300px;
         }
 
         /* Footer */
@@ -397,25 +410,25 @@
                     <img src="photos/0N4A9362.jpg" alt="代云海 & 冯馨瑶" loading="lazy">
                 </div>
                 <div class="photo-grid">
-                    <div class="photo-item">
+                    <div class="photo-item landscape">
                         <img src="photos/0N4A9535-喜字九宫格.jpg" alt="中式喜庆" loading="lazy">
                     </div>
-                    <div class="photo-item">
+                    <div class="photo-item landscape">
                         <img src="photos/0N4A9754.jpg" alt="花园漫步" loading="lazy">
                     </div>
-                    <div class="photo-item">
+                    <div class="photo-item portrait">
                         <img src="photos/0N4A9427.jpg" alt="教堂相望" loading="lazy">
                     </div>
-                    <div class="photo-item">
+                    <div class="photo-item portrait">
                         <img src="photos/0N4A9435.jpg" alt="甜蜜互动" loading="lazy">
                     </div>
-                    <div class="photo-item">
+                    <div class="photo-item portrait">
                         <img src="photos/0N4A9398.jpg" alt="新娘独照" loading="lazy">
                     </div>
-                    <div class="photo-item">
+                    <div class="photo-item portrait">
                         <img src="photos/0N4A9416.jpg" alt="新郎独照" loading="lazy">
                     </div>
-                    <div class="photo-item">
+                    <div class="photo-item full">
                         <img src="photos/0N4A9523-喜字九宫格.jpg" alt="中式礼服" loading="lazy">
                     </div>
                 </div>
