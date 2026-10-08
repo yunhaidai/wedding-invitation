@@ -7,54 +7,34 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Noto Serif SC', serif;
-            background: #8B0000;
-            color: #3a0a0a;
+            background: #fdf2f8;
+            color: #7c3a5e;
             overflow-x: hidden;
         }
 
         .page {
             max-width: 480px;
             margin: 0 auto;
-            background: linear-gradient(180deg, #FFF8E7 0%, #FFF1D4 50%, #FFF8E7 100%);
+            background: linear-gradient(180deg, #fff5f9 0%, #fce4ec 30%, #fff0f5 70%, #fff5f9 100%);
             min-height: 100vh;
             position: relative;
-            overflow: hidden;
         }
 
-        /* Decorative border pattern */
-        .page::before {
-            content: '';
+        .flower-deco {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 2px solid #C41E3A;
+            font-size: 30px;
+            opacity: 0.15;
             pointer-events: none;
-            z-index: 1;
         }
+        .flower-deco.f1 { top: 80px; left: 10px; transform: rotate(-20deg); }
+        .flower-deco.f2 { top: 120px; right: 10px; transform: rotate(15deg); }
+        .flower-deco.f3 { bottom: 200px; left: 15px; transform: rotate(10deg); }
+        .flower-deco.f4 { bottom: 150px; right: 15px; transform: rotate(-15deg); }
 
-        .page::after {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            right: 15px;
-            bottom: 15px;
-            border: 1px solid #D4A017;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* Cover section */
         .cover {
             height: 100vh;
             display: flex;
@@ -62,57 +42,80 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 40px 25px;
             position: relative;
-            background: radial-gradient(ellipse at center, #FFF8E7 0%, #FFE4B5 100%);
         }
 
-        .double-happiness {
-            font-size: 120px;
-            color: #C41E3A;
-            text-shadow: 3px 3px 6px rgba(139, 0, 0, 0.3);
-            margin-bottom: 20px;
-            animation: glow 2s ease-in-out infinite alternate;
+        .cover-heart {
+            font-size: 50px;
+            color: #e91e8c;
+            margin-bottom: 15px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .cover-ring {
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(233, 30, 140, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .cover-ring::before {
+            content: '';
+            width: 60px;
+            height: 60px;
+            border: 1px solid rgba(233, 30, 140, 0.2);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .cover-ring-text {
             font-family: 'Ma Shan Zheng', cursive;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 3px 3px 6px rgba(139, 0, 0, 0.3); }
-            to { text-shadow: 3px 3px 20px rgba(196, 30, 58, 0.5), 0 0 30px rgba(212, 160, 23, 0.3); }
+            font-size: 22px;
+            color: #e91e8c;
         }
 
         .cover-title {
             font-family: 'Ma Shan Zheng', cursive;
-            font-size: 28px;
-            color: #8B0000;
-            margin-bottom: 10px;
-            letter-spacing: 8px;
+            font-size: 26px;
+            color: #c2185b;
+            letter-spacing: 6px;
+            margin-bottom: 25px;
         }
 
         .cover-names {
             font-family: 'Ma Shan Zheng', cursive;
-            font-size: 42px;
-            color: #C41E3A;
-            margin: 20px 0;
-            letter-spacing: 4px;
+            font-size: 38px;
+            color: #ad1457;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
         }
 
-        .cover-names .ampersand {
-            font-size: 30px;
-            color: #D4A017;
-            margin: 0 10px;
+        .cover-and {
+            font-size: 18px;
+            color: #f48fb1;
+            margin: 8px 0 20px;
         }
 
         .cover-date {
-            font-size: 16px;
-            color: #8B4513;
-            margin-top: 15px;
+            font-size: 15px;
+            color: #ad1457;
             letter-spacing: 3px;
         }
 
         .cover-lunar {
-            font-size: 14px;
-            color: #A0522D;
+            font-size: 13px;
+            color: #e91e8c;
             margin-top: 8px;
             letter-spacing: 2px;
         }
@@ -120,138 +123,92 @@
         .scroll-hint {
             position: absolute;
             bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
+            font-size: 13px;
+            color: #f48fb1;
             animation: bounce 2s infinite;
-            color: #C41E3A;
-            font-size: 14px;
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
-        /* Section styles */
         .section {
             padding: 50px 30px;
             text-align: center;
-            position: relative;
         }
 
         .section-title {
             font-family: 'Ma Shan Zheng', cursive;
             font-size: 26px;
-            color: #C41E3A;
-            margin-bottom: 25px;
-            position: relative;
-            display: inline-block;
+            color: #c2185b;
+            margin-bottom: 20px;
         }
 
-        .section-title::before,
-        .section-title::after {
-            content: '◆';
-            font-size: 12px;
-            color: #D4A017;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .section-title::before { left: -25px; }
-        .section-title::after { right: -25px; }
-
-        /* Invitation text */
-        .invitation-text {
+        .section-flowers {
             font-size: 16px;
-            line-height: 2;
-            color: #5a1a1a;
-            max-width: 320px;
+            color: #f48fb1;
+            margin-bottom: 25px;
+            letter-spacing: 8px;
+        }
+
+        .invitation-text {
+            font-size: 15px;
+            line-height: 2.2;
+            color: #880e4f;
+            max-width: 300px;
             margin: 0 auto;
         }
 
-        /* Decorative divider */
-        .divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 30px auto;
-            max-width: 200px;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #D4A017, transparent);
-        }
-
-        .divider-icon {
-            margin: 0 15px;
-            color: #C41E3A;
-            font-size: 18px;
-        }
-
-        /* Couple section */
         .couple-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 25px;
+            margin-top: 25px;
         }
 
-        .person {
-            text-align: center;
-        }
+        .person { text-align: center; }
 
         .person-avatar {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            border: 3px solid #D4A017;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            border: 2px solid #f48fb1;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 10px;
-            font-size: 36px;
-            background: linear-gradient(135deg, #FFE4E1, #FFF0F5);
+            font-size: 32px;
         }
 
         .person-name {
             font-family: 'Ma Shan Zheng', cursive;
             font-size: 22px;
-            color: #8B0000;
+            color: #ad1457;
         }
 
         .person-label {
             font-size: 12px;
-            color: #A0522D;
-            margin-top: 4px;
+            color: #f48fb1;
+            margin-top: 3px;
         }
 
         .couple-heart {
-            font-size: 30px;
-            color: #C41E3A;
-            animation: heartbeat 1.5s infinite;
+            font-size: 28px;
+            color: #e91e8c;
+            animation: pulse 1.5s infinite;
         }
 
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        /* Details section */
         .details-card {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid #D4A017;
-            border-radius: 12px;
-            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid #f8bbd0;
+            border-radius: 15px;
+            padding: 25px 20px;
             max-width: 320px;
             margin: 0 auto;
-            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(233, 30, 140, 0.08);
         }
 
         .detail-item {
@@ -262,60 +219,48 @@
         }
 
         .detail-icon {
-            font-size: 24px;
-            margin-right: 15px;
-            min-width: 30px;
+            font-size: 22px;
+            margin-right: 12px;
+            min-width: 28px;
             text-align: center;
         }
 
-        .detail-content {
-            flex: 1;
-        }
-
         .detail-label {
-            font-size: 12px;
-            color: #A0522D;
-            margin-bottom: 4px;
+            font-size: 11px;
+            color: #f48fb1;
+            margin-bottom: 3px;
         }
 
         .detail-value {
-            font-size: 16px;
-            color: #5a1a1a;
+            font-size: 15px;
+            color: #880e4f;
             font-weight: 600;
         }
 
         .detail-sub {
             font-size: 13px;
-            color: #8B4513;
+            color: #ad1457;
             margin-top: 2px;
         }
 
-        /* Map button */
         .map-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             margin-top: 20px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #C41E3A, #8B0000);
-            color: #FFD700;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #e91e8c, #c2185b);
+            color: #fff;
             text-decoration: none;
             border-radius: 25px;
             font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+            box-shadow: 0 4px 15px rgba(233, 30, 140, 0.3);
             transition: all 0.3s;
         }
 
         .map-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(196, 30, 58, 0.4);
-        }
-
-        /* Photo section placeholder */
-        .photo-section {
-            padding: 40px 30px;
-            text-align: center;
+            box-shadow: 0 6px 20px rgba(233, 30, 140, 0.4);
         }
 
         .photo-placeholder {
@@ -323,50 +268,40 @@
             max-width: 300px;
             height: 200px;
             margin: 20px auto;
-            border: 2px dashed #D4A017;
-            border-radius: 12px;
+            border: 2px dashed #f8bbd0;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #A0522D;
+            color: #f48fb1;
             font-size: 14px;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.5);
         }
 
-        /* Footer */
         .footer {
             padding: 40px 30px 60px;
             text-align: center;
-            background: linear-gradient(180deg, transparent, rgba(196, 30, 58, 0.05));
+            background: linear-gradient(180deg, transparent, rgba(233, 30, 140, 0.05));
         }
 
         .footer-text {
             font-family: 'Ma Shan Zheng', cursive;
-            font-size: 20px;
-            color: #C41E3A;
+            font-size: 22px;
+            color: #c2185b;
             margin-bottom: 10px;
         }
 
         .footer-sub {
             font-size: 13px;
-            color: #8B4513;
+            color: #ad1457;
         }
 
-        /* Floating decorations */
-        .float-deco {
-            position: absolute;
-            opacity: 0.15;
-            font-size: 40px;
-            color: #C41E3A;
-            pointer-events: none;
+        .footer-names {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #e91e8c;
         }
 
-        .float-deco.top-left { top: 60px; left: 20px; }
-        .float-deco.top-right { top: 60px; right: 20px; }
-        .float-deco.bottom-left { bottom: 60px; left: 20px; }
-        .float-deco.bottom-right { bottom: 60px; right: 20px; }
-
-        /* Animations on scroll */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -377,88 +312,53 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Lantern decorations */
-        .lantern {
-            position: absolute;
-            width: 30px;
-            height: 40px;
-            background: radial-gradient(ellipse, #FF4500, #C41E3A);
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
-        }
-
-        .lantern::before {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 8px;
-            background: #D4A017;
-            border-radius: 3px 3px 0 0;
-        }
-
-        .lantern::after {
-            content: '福';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 14px;
-            color: #FFD700;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
     <div class="page">
-        <!-- Cover -->
+        <span class="flower-deco f1">🌸</span>
+        <span class="flower-deco f2">🌷</span>
+        <span class="flower-deco f3">🌺</span>
+        <span class="flower-deco f4">🌸</span>
+
         <section class="cover">
-            <span class="float-deco top-left">云</span>
-            <span class="float-deco top-right">瑶</span>
-            <div class="double-happiness">囍</div>
-            <div class="cover-title">婚 礼 邀 请 函</div>
-            <div class="cover-names">
-                代云海 <span class="ampersand">&</span> 冯馨瑶
+            <div class="cover-heart">💕</div>
+            <div class="cover-ring">
+                <span class="cover-ring-text">囍</span>
             </div>
+            <div class="cover-title">婚礼邀请函</div>
+            <div class="cover-names">代云海</div>
+            <div class="cover-and">— & —</div>
+            <div class="cover-names">冯馨瑶</div>
             <div class="cover-date">2026年11月11日</div>
             <div class="cover-lunar">农历丙午年十月初三</div>
             <div class="scroll-hint">▼ 向上滑动查看详情</div>
         </section>
 
-        <!-- Invitation -->
         <section class="section fade-in">
             <div class="section-title">诚邀莅临</div>
-            <div class="divider">
-                <span class="divider-icon">❀</span>
-            </div>
+            <div class="section-flowers">✿ ❀ ✿</div>
             <div class="invitation-text">
                 谨定于<br>
                 公历二〇二六年十一月十一日<br>
                 农历丙午年十月初三<br>
                 为新郎 代云海 新娘 冯馨瑶<br>
-                举行结婚典礼<br>
-                <br>
+                举行结婚典礼<br><br>
                 恭请光临<br>
                 共鉴此情 同贺佳缘
             </div>
         </section>
 
-        <!-- Couple -->
         <section class="section fade-in">
             <div class="section-title">新人介绍</div>
-            <div class="divider">
-                <span class="divider-icon">♥</span>
-            </div>
+            <div class="section-flowers">♥ ❀ ♥</div>
             <div class="couple-container">
                 <div class="person">
                     <div class="person-avatar">🤵</div>
                     <div class="person-name">代云海</div>
                     <div class="person-label">新郎</div>
                 </div>
-                <div class="couple-heart">❤</div>
+                <div class="couple-heart">💗</div>
                 <div class="person">
                     <div class="person-avatar">👰</div>
                     <div class="person-name">冯馨瑶</div>
@@ -467,16 +367,13 @@
             </div>
         </section>
 
-        <!-- Wedding Details -->
         <section class="section fade-in">
             <div class="section-title">婚礼详情</div>
-            <div class="divider">
-                <span class="divider-icon">❀</span>
-            </div>
+            <div class="section-flowers">✿ ❀ ✿</div>
             <div class="details-card">
                 <div class="detail-item">
-                    <span class="detail-icon">📅</span>
-                    <div class="detail-content">
+                    <span class="detail-icon"></span>
+                    <div>
                         <div class="detail-label">良辰吉日</div>
                         <div class="detail-value">2026年11月11日（星期三）</div>
                         <div class="detail-sub">农历丙午年十月初三</div>
@@ -484,58 +381,44 @@
                 </div>
                 <div class="detail-item">
                     <span class="detail-icon">🏮</span>
-                    <div class="detail-content">
+                    <div>
                         <div class="detail-label">典礼地点</div>
                         <div class="detail-value">大众酒家</div>
                     </div>
                 </div>
                 <div class="detail-item">
                     <span class="detail-icon">📍</span>
-                    <div class="detail-content">
+                    <div>
                         <div class="detail-label">酒店地址</div>
-                        <div class="detail-value">四川省乐山市犍为县<br>罗城镇吴家塘街</div>
+                        <div class="detail-value">四川省乐山市犍为县</div>
+                        <div class="detail-sub">罗城镇吴家塘街</div>
                     </div>
                 </div>
             </div>
             <a class="map-btn" href="https://map.baidu.com/poi/%E5%A4%A7%E4%BC%97%E5%86%9C%E5%AE%B6%E4%B9%90/@11581657.985,3404670.86,19z?uid=7731e90ff1c340c193114cfb&ugc_type=3&ugc_ver=1&device_ratio=1&compat=1&en_uid=7731e90ff1c340c193114cfb&pcevaname=pc4.1&querytype=detailConInfo&da_src=shareurl" target="_blank">
-                📍 点击导航到酒店
+                 点击导航到酒店
             </a>
         </section>
 
-        <!-- Photo placeholder -->
-        <section class="photo-section fade-in">
+        <section class="section fade-in">
             <div class="section-title">甜蜜瞬间</div>
-            <div class="divider">
-                <span class="divider-icon">❀</span>
-            </div>
-            <div class="photo-placeholder" id="photoArea">
-                婚纱照即将更新...
-            </div>
+            <div class="section-flowers">✿ ❀ ✿</div>
+            <div class="photo-placeholder">婚纱照即将更新...</div>
         </section>
 
-        <!-- Footer -->
         <section class="footer fade-in">
             <div class="footer-text">执子之手 与子偕老</div>
             <div class="footer-sub">期待您的到来 共同见证我们的幸福时刻</div>
-            <div class="divider" style="margin-top: 20px;">
-                <span class="divider-icon">囍</span>
-            </div>
-            <div style="margin-top: 15px; font-size: 13px; color: #A0522D;">
-                代云海 & 冯馨瑶 敬邀
-            </div>
+            <div class="footer-names">代云海 & 冯馨瑶 敬邀</div>
         </section>
     </div>
 
     <script>
-        // Scroll animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
