@@ -239,54 +239,107 @@
             color: #fff;
         }
 
-        /* Photo gallery */
-        .photo-gallery {
+        /* Photo slideshow */
+        .slideshow {
+            position: relative;
+            width: 100%;
             max-width: 420px;
             margin: 0 auto;
-        }
-
-        .photo-hero {
-            width: 100%;
-            border-radius: 4px;
+            border-radius: 6px;
             overflow: hidden;
-            margin-bottom: 15px;
+            background: #f5f0eb;
+            aspect-ratio: 3/4;
         }
 
-        .photo-hero img {
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
         }
 
-        .photo-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
+        .slide.active {
+            opacity: 1;
         }
 
-        .photo-grid .photo-item {
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .photo-grid .photo-item img {
+        .slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
+            transform: scale(1);
+            transition: transform 4s ease-out;
         }
 
-        .photo-grid .photo-item.landscape {
-            height: 200px;
+        .slide.active img {
+            transform: scale(1.08);
         }
 
-        .photo-grid .photo-item.portrait {
-            height: 260px;
+        .slide-nav {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
         }
 
-        .photo-grid .photo-item.full {
-            grid-column: span 2;
-            height: 300px;
+        .slide-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.3s;
+        }
+
+        .slide-dot.active {
+            background: #fff;
+            transform: scale(1.2);
+        }
+
+        .slide-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: rgba(0,0,0,0.25);
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: background 0.2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .slide-arrow:hover {
+            background: rgba(0,0,0,0.45);
+        }
+
+        .slide-arrow.prev { left: 10px; }
+        .slide-arrow.next { right: 10px; }
+
+        .slide-counter {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(0,0,0,0.35);
+            color: #fff;
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            z-index: 10;
+            letter-spacing: 1px;
         }
 
         /* Footer */
@@ -430,16 +483,8 @@
             z-index: 10001;
         }
 
-        /* Gallery photos clickable */
-        .photo-hero img,
-        .photo-grid .photo-item img {
+        .slideshow {
             cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        .photo-hero img:hover,
-        .photo-grid .photo-item img:hover {
-            opacity: 0.85;
         }
     </style>
 </head>
@@ -519,33 +564,19 @@
             <div class="section-label">GALLERY</div>
             <div class="section-title">甜蜜瞬间</div>
             <div class="section-line"></div>
-            <div class="photo-gallery">
-                <div class="photo-hero">
-                    <img src="photos/0N4A9362.jpg" alt="代云海 & 冯馨瑶" loading="lazy">
-                </div>
-                <div class="photo-grid">
-                    <div class="photo-item landscape">
-                        <img src="photos/0N4A9535-喜字九宫格.jpg" alt="中式喜庆" loading="lazy">
-                    </div>
-                    <div class="photo-item landscape">
-                        <img src="photos/0N4A9754.jpg" alt="花园漫步" loading="lazy">
-                    </div>
-                    <div class="photo-item portrait">
-                        <img src="photos/0N4A9427.jpg" alt="教堂相望" loading="lazy">
-                    </div>
-                    <div class="photo-item portrait">
-                        <img src="photos/0N4A9435.jpg" alt="甜蜜互动" loading="lazy">
-                    </div>
-                    <div class="photo-item portrait">
-                        <img src="photos/0N4A9398.jpg" alt="新娘独照" loading="lazy">
-                    </div>
-                    <div class="photo-item portrait">
-                        <img src="photos/0N4A9416.jpg" alt="新郎独照" loading="lazy">
-                    </div>
-                    <div class="photo-item full">
-                        <img src="photos/0N4A9523-喜字九宫格.jpg" alt="中式礼服" loading="lazy">
-                    </div>
-                </div>
+            <div class="slideshow" id="slideshow">
+                <div class="slide-counter" id="slideCounter">1 / 8</div>
+                <div class="slide active"><img src="photos/0N4A9362.jpg" alt="代云海 & 冯馨瑶" loading="lazy"></div>
+                <div class="slide"><img src="photos/0N4A9535-喜字九宫格.jpg" alt="中式喜庆" loading="lazy"></div>
+                <div class="slide"><img src="photos/0N4A9754.jpg" alt="花园漫步" loading="lazy"></div>
+                <div class="slide"><img src="photos/0N4A9427.jpg" alt="教堂相望" loading="lazy"></div>
+                <div class="slide"><img src="photos/0N4A9435.jpg" alt="甜蜜互动" loading="lazy"></div>
+                <div class="slide"><img src="photos/0N4A9398.jpg" alt="新娘独照" loading="lazy"></div>
+                <div class="slide"><img src="photos/0N4A9416.jpg" alt="新郎独照" loading="lazy"></div>
+                <div class="slide"><img src="photos/0N4A9523-喜字九宫格.jpg" alt="中式礼服" loading="lazy"></div>
+                <button class="slide-arrow prev" id="slidePrev">&#8249;</button>
+                <button class="slide-arrow next" id="slideNext">&#8250;</button>
+                <div class="slide-nav" id="slideNav"></div>
             </div>
         </section>
 
@@ -577,6 +608,60 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+        /* Slideshow */
+        const slides = document.querySelectorAll('.slide');
+        const slideNav = document.getElementById('slideNav');
+        const slideCounter = document.getElementById('slideCounter');
+        const slideshow = document.getElementById('slideshow');
+        let currentSlide = 0, slideTimer = null;
+        const SLIDE_INTERVAL = 4000;
+
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', (e) => { e.stopPropagation(); goToSlide(i); });
+            slideNav.appendChild(dot);
+        });
+
+        function goToSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            slideNav.children[currentSlide].classList.remove('active');
+            currentSlide = ((n % slides.length) + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            slideNav.children[currentSlide].classList.add('active');
+            slideCounter.textContent = (currentSlide + 1) + ' / ' + slides.length;
+            resetSlideTimer();
+        }
+
+        function nextSlide() { goToSlide(currentSlide + 1); }
+        function prevSlide() { goToSlide(currentSlide - 1); }
+
+        function resetSlideTimer() {
+            clearInterval(slideTimer);
+            slideTimer = setInterval(nextSlide, SLIDE_INTERVAL);
+        }
+
+        document.getElementById('slideNext').addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
+        document.getElementById('slidePrev').addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
+
+        let touchStartX = 0, touchStartY = 0, touchMoved = false;
+        slideshow.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            touchMoved = false;
+        }, { passive: true });
+        slideshow.addEventListener('touchmove', () => { touchMoved = true; }, { passive: true });
+        slideshow.addEventListener('touchend', (e) => {
+            if (!touchMoved) return;
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            const dy = e.changedTouches[0].clientY - touchStartY;
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+                dx < 0 ? nextSlide() : prevSlide();
+            }
+        });
+
+        resetSlideTimer();
+
         /* Lightbox */
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
@@ -598,15 +683,17 @@
             resetZoom();
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
+            clearInterval(slideTimer);
         }
 
         function closeLightbox() {
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
+            resetSlideTimer();
         }
 
-        document.querySelectorAll('.photo-hero img, .photo-grid .photo-item img').forEach(img => {
-            img.addEventListener('click', () => openLightbox(img.src));
+        slideshow.addEventListener('click', () => {
+            openLightbox(slides[currentSlide].querySelector('img').src);
         });
 
         document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
