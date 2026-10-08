@@ -327,6 +327,120 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.92);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-img-wrap {
+            position: relative;
+            max-width: 95vw;
+            max-height: 85vh;
+            overflow: hidden;
+            cursor: grab;
+            touch-action: none;
+        }
+
+        .lightbox-img-wrap.dragging {
+            cursor: grabbing;
+        }
+
+        .lightbox-img {
+            max-width: 95vw;
+            max-height: 85vh;
+            object-fit: contain;
+            transition: transform 0.2s ease;
+            transform-origin: center center;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 16px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            transition: background 0.2s;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .lightbox-zoom {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10001;
+        }
+
+        .lightbox-zoom button {
+            width: 44px;
+            height: 44px;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .lightbox-zoom button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .lightbox-hint {
+            position: fixed;
+            bottom: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.5);
+            font-size: 11px;
+            letter-spacing: 1px;
+            z-index: 10001;
+        }
+
+        /* Gallery photos clickable */
+        .photo-hero img,
+        .photo-grid .photo-item img {
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .photo-hero img:hover,
+        .photo-grid .photo-item img:hover {
+            opacity: 0.85;
+        }
     </style>
 </head>
 <body>
@@ -442,6 +556,19 @@
         </section>
     </div>
 
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&#10005;</button>
+        <div class="lightbox-img-wrap" id="lightboxWrap">
+            <img class="lightbox-img" id="lightboxImg" src="" alt="">
+        </div>
+        <div class="lightbox-hint">双指或滚轮缩放 · 拖拽移动</div>
+        <div class="lightbox-zoom">
+            <button id="zoomOut">&#8722;</button>
+            <button id="zoomReset">&#8634;</button>
+            <button id="zoomIn">&#43;</button>
+        </div>
+    </div>
+
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -449,6 +576,91 @@
             });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        /* Lightbox */
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxWrap = document.getElementById('lightboxWrap');
+        let scale = 1, panX = 0, panY = 0;
+        let isDragging = false, dragStartX = 0, dragStartY = 0, panStartX = 0, panStartY = 0;
+
+        function applyTransform() {
+            lightboxImg.style.transform = 'translate(' + panX + 'px,' + panY + 'px) scale(' + scale + ')';
+        }
+
+        function resetZoom() {
+            scale = 1; panX = 0; panY = 0;
+            applyTransform();
+        }
+
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            resetZoom();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.querySelectorAll('.photo-hero img, .photo-grid .photo-item img').forEach(img => {
+            img.addEventListener('click', () => openLightbox(img.src));
+        });
+
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+        document.getElementById('zoomIn').addEventListener('click', () => { scale = Math.min(scale * 1.3, 5); applyTransform(); });
+        document.getElementById('zoomOut').addEventListener('click', () => { scale = Math.max(scale / 1.3, 0.5); applyTransform(); });
+        document.getElementById('zoomReset').addEventListener('click', resetZoom);
+
+        lightboxWrap.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            scale = e.deltaY < 0 ? Math.min(scale * 1.15, 5) : Math.max(scale / 1.15, 0.5);
+            applyTransform();
+        }, { passive: false });
+
+        lightboxWrap.addEventListener('mousedown', (e) => {
+            if (scale <= 1) return;
+            isDragging = true;
+            dragStartX = e.clientX; dragStartY = e.clientY;
+            panStartX = panX; panStartY = panY;
+            lightboxWrap.classList.add('dragging');
+        });
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            panX = panStartX + (e.clientX - dragStartX);
+            panY = panStartY + (e.clientY - dragStartY);
+            applyTransform();
+        });
+        window.addEventListener('mouseup', () => { isDragging = false; lightboxWrap.classList.remove('dragging'); });
+
+        let lastTouchDist = 0;
+        lightboxWrap.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 2) {
+                lastTouchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+            } else if (e.touches.length === 1 && scale > 1) {
+                isDragging = true;
+                dragStartX = e.touches[0].clientX; dragStartY = e.touches[0].clientY;
+                panStartX = panX; panStartY = panY;
+            }
+        }, { passive: true });
+        lightboxWrap.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 2) {
+                e.preventDefault();
+                const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                scale = Math.min(Math.max(scale * (dist / lastTouchDist), 0.5), 5);
+                lastTouchDist = dist;
+                applyTransform();
+            } else if (e.touches.length === 1 && isDragging) {
+                panX = panStartX + (e.touches[0].clientX - dragStartX);
+                panY = panStartY + (e.touches[0].clientY - dragStartY);
+                applyTransform();
+            }
+        }, { passive: false });
+        lightboxWrap.addEventListener('touchend', () => { isDragging = false; });
     </script>
 </body>
 </html>
