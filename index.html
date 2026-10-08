@@ -181,6 +181,13 @@
             justify-content: center;
             margin: 0 auto 10px;
             font-size: 32px;
+            overflow: hidden;
+        }
+
+        .person-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .person-name {
@@ -295,6 +302,7 @@
             box-shadow: 0 3px 12px rgba(233, 30, 140, 0.1);
             border: 2px solid #f8bbd0;
             transition: transform 0.3s;
+            height: 200px;
         }
 
         .photo-grid .photo-item:hover {
@@ -303,12 +311,14 @@
 
         .photo-grid .photo-item img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
 
         .photo-grid .photo-item.tall {
             grid-row: span 2;
+            height: 412px;
         }
 
         .footer {
@@ -363,7 +373,7 @@
             <div class="cover-names">代云海</div>
             <div class="cover-and">— & —</div>
             <div class="cover-names">冯馨瑶</div>
-            <div class="cover-date">2026年11月11日</div>
+            <div class="cover-date">2026年11月11日（星期三）</div>
             <div class="cover-lunar">农历丙午年十月初三</div>
             <div class="scroll-hint">▼ 向上滑动查看详情</div>
         </section>
@@ -387,13 +397,13 @@
             <div class="section-flowers">♥ ❀ ♥</div>
             <div class="couple-container">
                 <div class="person">
-                    <div class="person-avatar">🤵</div>
+                    <div class="person-avatar"><img src="photos/avatar-groom.jpg" alt="代云海"></div>
                     <div class="person-name">代云海</div>
                     <div class="person-label">新郎</div>
                 </div>
                 <div class="couple-heart">💗</div>
                 <div class="person">
-                    <div class="person-avatar">👰</div>
+                    <div class="person-avatar"><img src="photos/avatar-bride.jpg" alt="冯馨瑶"></div>
                     <div class="person-name">冯馨瑶</div>
                     <div class="person-label">新娘</div>
                 </div>
