@@ -302,7 +302,6 @@
             box-shadow: 0 3px 12px rgba(233, 30, 140, 0.1);
             border: 2px solid #f8bbd0;
             transition: transform 0.3s;
-            height: 200px;
         }
 
         .photo-grid .photo-item:hover {
@@ -311,14 +310,13 @@
 
         .photo-grid .photo-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
             display: block;
         }
 
-        .photo-grid .photo-item.tall {
+        /* Portrait photos span 2 rows for full display */
+        .photo-grid .photo-item.portrait {
             grid-row: span 2;
-            height: 412px;
         }
 
         .footer {
@@ -451,16 +449,16 @@
                     <img src="photos/0N4A9362.jpg" alt="代云海 & 冯馨瑶" loading="lazy">
                 </div>
                 <div class="photo-grid">
-                    <div class="photo-item tall">
-                        <img src="photos/0N4A9721.jpg" alt="花园粉色礼服" loading="lazy">
+                    <div class="photo-item portrait">
+                        <img src="photos/0N4A9429-韶华摆台.jpg" alt="花拱门下" loading="lazy">
                     </div>
                     <div class="photo-item">
-                        <img src="photos/0N4A9429-韶华摆台.jpg" alt="花拱门下" loading="lazy">
+                        <img src="photos/0N4A9721.jpg" alt="花园粉色礼服" loading="lazy">
                     </div>
                     <div class="photo-item">
                         <img src="photos/0N4A9376.jpg" alt="携手相望" loading="lazy">
                     </div>
-                    <div class="photo-item">
+                    <div class="photo-item portrait">
                         <img src="photos/0N4A9523-喜字九宫格.jpg" alt="中式礼服" loading="lazy">
                     </div>
                     <div class="photo-item">
