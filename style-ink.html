@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>代云海 & 冯馨瑶 婚礼邀请函 - 水墨中国风</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&family=ZCOOL+XiaoWei&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+            background: #e8e4df;
+            color: #2c2c2c;
+            overflow-x: hidden;
+        }
+
+        .page {
+            max-width: 480px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #f7f4ef 0%, #f0ebe3 50%, #f7f4ef 100%);
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Ink wash background effect */
+        .page::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(0,0,0,0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(0,0,0,0.02) 0%, transparent 40%),
+                radial-gradient(ellipse at 60% 80%, rgba(0,0,0,0.02) 0%, transparent 45%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Cover */
+        .cover {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ink-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(44,44,44,0.08) 0%, rgba(44,44,44,0.02) 60%, transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .ink-circle::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 1px solid rgba(44,44,44,0.1);
+        }
+
+        .cover-seal {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 48px;
+            color: #8b0000;
+            text-shadow: 1px 1px 2px rgba(139,0,0,0.2);
+        }
+
+        .cover-branch {
+            font-size: 20px;
+            color: rgba(44,44,44,0.15);
+            letter-spacing: 15px;
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 30px;
+            color: #2c2c2c;
+            letter-spacing: 10px;
+            margin-bottom: 30px;
+        }
+
+        .cover-names {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 40px;
+            color: #1a1a1a;
+            letter-spacing: 5px;
+            margin-bottom: 5px;
+        }
+
+        .cover-and {
+            font-size: 16px;
+            color: #8b0000;
+            margin: 10px 0 20px;
+            letter-spacing: 5px;
+        }
+
+        .cover-date {
+            font-size: 16px;
+            color: #555;
+            letter-spacing: 4px;
+        }
+
+        .cover-lunar {
+            font-size: 14px;
+            color: #888;
+            margin-top: 8px;
+            letter-spacing: 2px;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            font-size: 12px;
+            color: #aaa;
+            letter-spacing: 3px;
+            animation: fadeInOut 2.5s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Section */
+        .section {
+            padding: 55px 30px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 28px;
+            color: #2c2c2c;
+            margin-bottom: 15px;
+            letter-spacing: 5px;
+        }
+
+        .section-ink-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #2c2c2c, transparent);
+            margin: 0 auto 25px;
+            opacity: 0.3;
+        }
+
+        /* Invitation */
+        .invitation-text {
+            font-size: 16px;
+            line-height: 2.4;
+            color: #444;
+            max-width: 300px;
+            margin: 0 auto;
+            letter-spacing: 1px;
+        }
+
+        /* Couple */
+        .couple-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 35px;
+            margin-top: 25px;
+        }
+
+        .person { text-align: center; }
+
+        .person-avatar {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f0ebe3, #e8e4df);
+            border: 1px solid rgba(44,44,44,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 34px;
+        }
+
+        .person-name {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 24px;
+            color: #1a1a1a;
+        }
+
+        .person-label {
+            font-size: 12px;
+            color: #999;
+            margin-top: 4px;
+            letter-spacing: 2px;
+        }
+
+        .couple-seal {
+            width: 36px;
+            height: 36px;
+            background: #8b0000;
+            color: #fff;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 18px;
+            transform: rotate(5deg);
+        }
+
+        /* Details */
+        .details-card {
+            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(44,44,44,0.1);
+            border-radius: 8px;
+            padding: 30px 20px;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .detail-item {
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .detail-icon {
+            font-size: 20px;
+            margin-right: 12px;
+            min-width: 28px;
+            text-align: center;
+            opacity: 0.6;
+        }
+
+        .detail-label {
+            font-size: 11px;
+            color: #999;
+            margin-bottom: 4px;
+            letter-spacing: 2px;
+        }
+
+        .detail-value {
+            font-size: 16px;
+            color: #2c2c2c;
+            font-weight: 600;
+        }
+
+        .detail-sub {
+            font-size: 13px;
+            color: #777;
+            margin-top: 2px;
+        }
+
+        /* Map button */
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            padding: 12px 28px;
+            background: #2c2c2c;
+            color: #f0ebe3;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: #8b0000;
+            color: #fff;
+        }
+
+        /* Photo placeholder */
+        .photo-placeholder {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            margin: 20px auto;
+            border: 1px dashed rgba(44,44,44,0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 14px;
+            letter-spacing: 3px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 45px 30px 60px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-text {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 24px;
+            color: #2c2c2c;
+            letter-spacing: 5px;
+            margin-bottom: 12px;
+        }
+
+        .footer-sub {
+            font-size: 13px;
+            color: #888;
+            letter-spacing: 2px;
+        }
+
+        .footer-seal {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 6px 14px;
+            border: 1px solid #8b0000;
+            color: #8b0000;
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 14px;
+            letter-spacing: 3px;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <section class="cover">
+            <div class="ink-circle">
+                <span class="cover-seal">囍</span>
+            </div>
+            <div class="cover-branch">— 竹 —</div>
+            <div class="cover-title">婚礼邀请函</div>
+            <div class="cover-names">代云海</div>
+            <div class="cover-and">— 之 —</div>
+            <div class="cover-names">冯馨瑶</div>
+            <div class="cover-date">2026年11月11日（星期三）</div>
+            <div class="cover-lunar">农历丙午年十月初三</div>
+            <div class="scroll-hint">向上滑动查看详情</div>
+        </section>
+
+        <section class="section fade-in">
+            <div class="section-title">诚邀莅临</div>
+            <div class="section-ink-line"></div>
+            <div class="invitation-text">
+                谨定于<br>
+                公历二〇二六年十一月十一日<br>
+                农历丙午年十月初三<br>
+                为新郎 代云海 新娘 冯馨瑶<br>
+                举行结婚典礼<br><br>
+                恭请光临<br>
+                共鉴此情 同贺佳缘
+            </div>
+        </section>
+
+        <section class="section fade-in">
+            <div class="section-title">新人介绍</div>
+            <div class="section-ink-line"></div>
+            <div class="couple-container">
+                <div class="person">
+                    <div class="person-avatar">🤵</div>
+                    <div class="person-name">代云海</div>
+                    <div class="person-label">新郎</div>
+                </div>
+                <div class="couple-seal">囍</div>
+                <div class="person">
+                    <div class="person-avatar"></div>
+                    <div class="person-name">冯馨瑶</div>
+                    <div class="person-label">新娘</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section fade-in">
+            <div class="section-title">婚礼详情</div>
+            <div class="section-ink-line"></div>
+            <div class="details-card">
+                <div class="detail-item">
+                    <span class="detail-icon">📅</span>
+                    <div>
+                        <div class="detail-label">良辰吉日</div>
+                        <div class="detail-value">2026年11月11日（星期三）</div>
+                        <div class="detail-sub">农历丙午年十月初三</div>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🏮</span>
+                    <div>
+                        <div class="detail-label">典礼地点</div>
+                        <div class="detail-value">大众酒家</div>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">📍</span>
+                    <div>
+                        <div class="detail-label">酒店地址</div>
+                        <div class="detail-value">四川省乐山市犍为县</div>
+                        <div class="detail-sub">罗城镇吴家塘街</div>
+                    </div>
+                </div>
+            </div>
+            <a class="map-btn" href="https://map.baidu.com/poi/%E5%A4%A7%E4%BC%97%E5%86%9C%E5%AE%B6%E4%B9%90/@11581657.985,3404670.86,19z?uid=7731e90ff1c340c193114cfb&ugc_type=3&ugc_ver=1&device_ratio=1&compat=1&en_uid=7731e90ff1c340c193114cfb&pcevaname=pc4.1&querytype=detailConInfo&da_src=shareurl" target="_blank">
+                 导航到酒店
+            </a>
+        </section>
+
+        <section class="section fade-in">
+            <div class="section-title">甜蜜瞬间</div>
+            <div class="section-ink-line"></div>
+            <div class="photo-placeholder">婚纱照即将更新</div>
+        </section>
+
+        <section class="footer fade-in">
+            <div class="footer-text">执子之手 与子偕老</div>
+            <div class="footer-sub">期待您的到来 共同见证我们的幸福时刻</div>
+            <div class="footer-seal">代云海 & 冯馨瑶</div>
+        </section>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

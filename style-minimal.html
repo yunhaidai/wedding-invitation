@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>代云海 & 冯馨瑶 婚礼邀请函 - 简约现代风</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: #f5f0eb;
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
+
+        .page {
+            max-width: 480px;
+            margin: 0 auto;
+            background: #fff;
+            min-height: 100vh;
+        }
+
+        /* Cover */
+        .cover {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 30px;
+            position: relative;
+        }
+
+        .cover-ornament {
+            width: 60px;
+            height: 1px;
+            background: #c9a96e;
+            margin: 0 auto 30px;
+        }
+
+        .cover-subtitle {
+            font-size: 12px;
+            letter-spacing: 6px;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .cover-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: #c9a96e;
+            margin-bottom: 40px;
+        }
+
+        .cover-names {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 300;
+            font-size: 36px;
+            color: #333;
+            letter-spacing: 6px;
+            margin-bottom: 10px;
+        }
+
+        .cover-ampersand {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 28px;
+            color: #c9a96e;
+            margin: 15px 0;
+        }
+
+        .cover-date {
+            font-size: 14px;
+            color: #888;
+            letter-spacing: 3px;
+            margin-top: 30px;
+        }
+
+        .cover-lunar {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 8px;
+            letter-spacing: 2px;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            font-size: 11px;
+            color: #bbb;
+            letter-spacing: 2px;
+            animation: fadeInOut 2s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Section */
+        .section {
+            padding: 60px 35px;
+            text-align: center;
+        }
+
+        .section-label {
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: #c9a96e;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 300;
+            font-size: 24px;
+            color: #333;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+        }
+
+        .section-line {
+            width: 40px;
+            height: 1px;
+            background: #c9a96e;
+            margin: 0 auto 30px;
+        }
+
+        /* Invitation text */
+        .invitation-text {
+            font-size: 15px;
+            line-height: 2.2;
+            color: #666;
+            font-weight: 300;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* Couple */
+        .couple-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .person { text-align: center; }
+
+        .person-name {
+            font-size: 20px;
+            font-weight: 400;
+            color: #333;
+            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+
+        .person-label {
+            font-size: 11px;
+            color: #aaa;
+            letter-spacing: 2px;
+        }
+
+        .couple-divider {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 24px;
+            color: #c9a96e;
+        }
+
+        /* Details */
+        .details-card {
+            max-width: 320px;
+            margin: 0 auto;
+            padding: 10px 0;
+        }
+
+        .detail-item {
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .detail-label {
+            font-size: 11px;
+            color: #c9a96e;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        .detail-value {
+            font-size: 16px;
+            color: #333;
+            font-weight: 400;
+        }
+
+        .detail-sub {
+            font-size: 13px;
+            color: #999;
+            margin-top: 4px;
+        }
+
+        /* Map button */
+        .map-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 30px;
+            border: 1px solid #c9a96e;
+            color: #c9a96e;
+            text-decoration: none;
+            font-size: 13px;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: #c9a96e;
+            color: #fff;
+        }
+
+        /* Photo placeholder */
+        .photo-placeholder {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            margin: 20px auto;
+            border: 1px solid #e0d5c5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #bbb;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 50px 30px 60px;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 18px;
+            font-weight: 300;
+            color: #555;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+
+        .footer-sub {
+            font-size: 12px;
+            color: #aaa;
+            letter-spacing: 2px;
+        }
+
+        .footer-names {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #999;
+            letter-spacing: 2px;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <section class="cover">
+            <div class="cover-ornament"></div>
+            <div class="cover-subtitle">WEDDING INVITATION</div>
+            <div class="cover-names">代云海</div>
+            <div class="cover-ampersand">&</div>
+            <div class="cover-names">冯馨瑶</div>
+            <div class="cover-date">2026 . 11 . 11</div>
+            <div class="cover-lunar">农历丙午年十月初三</div>
+            <div class="scroll-hint">SCROLL DOWN</div>
+        </section>
+
+        <section class="section fade-in">
+            <div class="section-label">INVITATION</div>
+            <div class="section-title">诚邀莅临</div>
+            <div class="section-line"></div>
+            <div class="invitation-text">
+                谨定于<br>
+                公历二〇二六年十一月十一日<br>
+                农历丙午年十月初三<br>
+                为新郎 代云海 新娘 冯馨瑶<br>
+                举行结婚典礼<br><br>
+                恭请光临
+            </div>
+        </section>
+
+        <section class="section fade-in">
+            <div class="section-label">COUPLE</div>
+            <div class="section-title">新人介绍</div>
+            <div class="section-line"></div>
+            <div class="couple-container">
+                <div class="person">
+                    <div class="person-name">代云海</div>
+                    <div class="person-label">新郎</div>
+                </div>
+                <div class="couple-divider">&</div>
+                <div class="person">
+                    <div class="person-name">冯馨瑶</div>
+                    <div class="person-label">新娘</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section fade-in">
+            <div class="section-label">DETAILS</div>
+            <div class="section-title">婚礼详情</div>
+            <div class="section-line"></div>
+            <div class="details-card">
+                <div class="detail-item">
+                    <div class="detail-label">日期</div>
+                    <div class="detail-value">2026年11月11日（星期三）</div>
+                    <div class="detail-sub">农历丙午年十月初三</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">地点</div>
+                    <div class="detail-value">大众酒家</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">地址</div>
+                    <div class="detail-value">四川省乐山市犍为县</div>
+                    <div class="detail-sub">罗城镇吴家塘街</div>
+                </div>
+            </div>
+            <a class="map-btn" href="https://map.baidu.com/poi/%E5%A4%A7%E4%BC%97%E5%86%9C%E5%AE%B6%E4%B9%90/@11581657.985,3404670.86,19z?uid=7731e90ff1c340c193114cfb&ugc_type=3&ugc_ver=1&device_ratio=1&compat=1&en_uid=7731e90ff1c340c193114cfb&pcevaname=pc4.1&querytype=detailConInfo&da_src=shareurl" target="_blank">
+                查看地图导航
+            </a>
+        </section>
+
+        <section class="section fade-in">
+            <div class="section-label">GALLERY</div>
+            <div class="section-title">甜蜜瞬间</div>
+            <div class="section-line"></div>
+            <div class="photo-placeholder">婚纱照即将更新</div>
+        </section>
+
+        <section class="footer fade-in">
+            <div class="footer-text">执子之手 与子偕老</div>
+            <div class="footer-sub">期待您的到来 共同见证我们的幸福时刻</div>
+            <div class="footer-names">代云海 & 冯馨瑶 敬邀</div>
+        </section>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
