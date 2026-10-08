@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>代云海 & 冯馨瑶 婚礼邀请函</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: #8B0000;
+            color: #3a0a0a;
+            overflow-x: hidden;
+        }
+
+        .page {
+            max-width: 480px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #FFF8E7 0%, #FFF1D4 50%, #FFF8E7 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative border pattern */
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid #C41E3A;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid #D4A017;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Cover section */
+        .cover {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            background: radial-gradient(ellipse at center, #FFF8E7 0%, #FFE4B5 100%);
+        }
+
+        .double-happiness {
+            font-size: 120px;
+            color: #C41E3A;
+            text-shadow: 3px 3px 6px rgba(139, 0, 0, 0.3);
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 3px 3px 6px rgba(139, 0, 0, 0.3); }
+            to { text-shadow: 3px 3px 20px rgba(196, 30, 58, 0.5), 0 0 30px rgba(212, 160, 23, 0.3); }
+        }
+
+        .cover-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 28px;
+            color: #8B0000;
+            margin-bottom: 10px;
+            letter-spacing: 8px;
+        }
+
+        .cover-names {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 42px;
+            color: #C41E3A;
+            margin: 20px 0;
+            letter-spacing: 4px;
+        }
+
+        .cover-names .ampersand {
+            font-size: 30px;
+            color: #D4A017;
+            margin: 0 10px;
+        }
+
+        .cover-date {
+            font-size: 16px;
+            color: #8B4513;
+            margin-top: 15px;
+            letter-spacing: 3px;
+        }
+
+        .cover-lunar {
+            font-size: 14px;
+            color: #A0522D;
+            margin-top: 8px;
+            letter-spacing: 2px;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: #C41E3A;
+            font-size: 14px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Section styles */
+        .section {
+            padding: 50px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 26px;
+            color: #C41E3A;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '◆';
+            font-size: 12px;
+            color: #D4A017;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .section-title::before { left: -25px; }
+        .section-title::after { right: -25px; }
+
+        /* Invitation text */
+        .invitation-text {
+            font-size: 16px;
+            line-height: 2;
+            color: #5a1a1a;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        /* Decorative divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px auto;
+            max-width: 200px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #D4A017, transparent);
+        }
+
+        .divider-icon {
+            margin: 0 15px;
+            color: #C41E3A;
+            font-size: 18px;
+        }
+
+        /* Couple section */
+        .couple-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .person {
+            text-align: center;
+        }
+
+        .person-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid #D4A017;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 36px;
+            background: linear-gradient(135deg, #FFE4E1, #FFF0F5);
+        }
+
+        .person-name {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 22px;
+            color: #8B0000;
+        }
+
+        .person-label {
+            font-size: 12px;
+            color: #A0522D;
+            margin-top: 4px;
+        }
+
+        .couple-heart {
+            font-size: 30px;
+            color: #C41E3A;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Details section */
+        .details-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid #D4A017;
+            border-radius: 12px;
+            padding: 30px 20px;
+            max-width: 320px;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(139, 0, 0, 0.1);
+        }
+
+        .detail-item {
+            margin: 18px 0;
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .detail-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .detail-content {
+            flex: 1;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #A0522D;
+            margin-bottom: 4px;
+        }
+
+        .detail-value {
+            font-size: 16px;
+            color: #5a1a1a;
+            font-weight: 600;
+        }
+
+        .detail-sub {
+            font-size: 13px;
+            color: #8B4513;
+            margin-top: 2px;
+        }
+
+        /* Map button */
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #C41E3A, #8B0000);
+            color: #FFD700;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(196, 30, 58, 0.4);
+        }
+
+        /* Photo section placeholder */
+        .photo-section {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            margin: 20px auto;
+            border: 2px dashed #D4A017;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #A0522D;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 30px 60px;
+            text-align: center;
+            background: linear-gradient(180deg, transparent, rgba(196, 30, 58, 0.05));
+        }
+
+        .footer-text {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 20px;
+            color: #C41E3A;
+            margin-bottom: 10px;
+        }
+
+        .footer-sub {
+            font-size: 13px;
+            color: #8B4513;
+        }
+
+        /* Floating decorations */
+        .float-deco {
+            position: absolute;
+            opacity: 0.15;
+            font-size: 40px;
+            color: #C41E3A;
+            pointer-events: none;
+        }
+
+        .float-deco.top-left { top: 60px; left: 20px; }
+        .float-deco.top-right { top: 60px; right: 20px; }
+        .float-deco.bottom-left { bottom: 60px; left: 20px; }
+        .float-deco.bottom-right { bottom: 60px; right: 20px; }
+
+        /* Animations on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Lantern decorations */
+        .lantern {
+            position: absolute;
+            width: 30px;
+            height: 40px;
+            background: radial-gradient(ellipse, #FF4500, #C41E3A);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+        }
+
+        .lantern::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 8px;
+            background: #D4A017;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .lantern::after {
+            content: '福';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+            color: #FFD700;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Cover -->
+        <section class="cover">
+            <span class="float-deco top-left">云</span>
+            <span class="float-deco top-right">瑶</span>
+            <div class="double-happiness">囍</div>
+            <div class="cover-title">婚 礼 邀 请 函</div>
+            <div class="cover-names">
+                代云海 <span class="ampersand">&</span> 冯馨瑶
+            </div>
+            <div class="cover-date">2026年11月11日</div>
+            <div class="cover-lunar">农历丙午年十月初三</div>
+            <div class="scroll-hint">▼ 向上滑动查看详情</div>
+        </section>
+
+        <!-- Invitation -->
+        <section class="section fade-in">
+            <div class="section-title">诚邀莅临</div>
+            <div class="divider">
+                <span class="divider-icon">❀</span>
+            </div>
+            <div class="invitation-text">
+                谨定于<br>
+                公历二〇二六年十一月十一日<br>
+                农历丙午年十月初三<br>
+                为新郎 代云海 新娘 冯馨瑶<br>
+                举行结婚典礼<br>
+                <br>
+                恭请光临<br>
+                共鉴此情 同贺佳缘
+            </div>
+        </section>
+
+        <!-- Couple -->
+        <section class="section fade-in">
+            <div class="section-title">新人介绍</div>
+            <div class="divider">
+                <span class="divider-icon">♥</span>
+            </div>
+            <div class="couple-container">
+                <div class="person">
+                    <div class="person-avatar">🤵</div>
+                    <div class="person-name">代云海</div>
+                    <div class="person-label">新郎</div>
+                </div>
+                <div class="couple-heart">❤</div>
+                <div class="person">
+                    <div class="person-avatar">👰</div>
+                    <div class="person-name">冯馨瑶</div>
+                    <div class="person-label">新娘</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wedding Details -->
+        <section class="section fade-in">
+            <div class="section-title">婚礼详情</div>
+            <div class="divider">
+                <span class="divider-icon">❀</span>
+            </div>
+            <div class="details-card">
+                <div class="detail-item">
+                    <span class="detail-icon">📅</span>
+                    <div class="detail-content">
+                        <div class="detail-label">良辰吉日</div>
+                        <div class="detail-value">2026年11月11日（星期日）</div>
+                        <div class="detail-sub">农历丙午年十月初三</div>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🏮</span>
+                    <div class="detail-content">
+                        <div class="detail-label">典礼地点</div>
+                        <div class="detail-value">大众酒家</div>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">📍</span>
+                    <div class="detail-content">
+                        <div class="detail-label">酒店地址</div>
+                        <div class="detail-value">四川省乐山市犍为县<br>罗城镇吴家塘街</div>
+                    </div>
+                </div>
+            </div>
+            <a class="map-btn" href="https://uri.amap.com/search?keyword=大众酒家&city=乐山&coordinate=gaode&callnative=1" target="_blank">
+                📍 点击导航到酒店
+            </a>
+        </section>
+
+        <!-- Photo placeholder -->
+        <section class="photo-section fade-in">
+            <div class="section-title">甜蜜瞬间</div>
+            <div class="divider">
+                <span class="divider-icon">❀</span>
+            </div>
+            <div class="photo-placeholder" id="photoArea">
+                婚纱照即将更新...
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer fade-in">
+            <div class="footer-text">执子之手 与子偕老</div>
+            <div class="footer-sub">期待您的到来 共同见证我们的幸福时刻</div>
+            <div class="divider" style="margin-top: 20px;">
+                <span class="divider-icon">囍</span>
+            </div>
+            <div style="margin-top: 15px; font-size: 13px; color: #A0522D;">
+                代云海 & 冯馨瑶 敬邀
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
