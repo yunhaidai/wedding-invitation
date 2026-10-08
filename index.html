@@ -486,6 +486,67 @@
         .slideshow {
             cursor: pointer;
         }
+
+        /* Music button */
+        .music-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            background: rgba(201,169,110,0.85);
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .music-btn:hover {
+            background: rgba(201,169,110,1);
+            transform: scale(1.1);
+        }
+
+        .music-btn.playing {
+            animation: musicPulse 1.5s ease infinite;
+        }
+
+        @keyframes musicPulse {
+            0%, 100% { box-shadow: 0 2px 12px rgba(201,169,110,0.3); }
+            50% { box-shadow: 0 2px 20px rgba(201,169,110,0.6); }
+        }
+
+        .music-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 18px;
+        }
+
+        .music-bars span {
+            display: block;
+            width: 3px;
+            background: #fff;
+            border-radius: 1px;
+            transition: height 0.2s;
+        }
+
+        .music-btn.playing .music-bars span:nth-child(1) { animation: barAnim 0.8s ease infinite; }
+        .music-btn.playing .music-bars span:nth-child(2) { animation: barAnim 0.8s ease 0.2s infinite; }
+        .music-btn.playing .music-bars span:nth-child(3) { animation: barAnim 0.8s ease 0.4s infinite; }
+        .music-btn.playing .music-bars span:nth-child(4) { animation: barAnim 0.8s ease 0.1s infinite; }
+
+        @keyframes barAnim {
+            0%, 100% { height: 4px; }
+            50% { height: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -595,6 +656,19 @@
             <div class="footer-names">代云海 & 冯馨瑶 敬邀</div>
         </section>
     </div>
+
+    <audio id="bgMusic" loop preload="auto">
+        <source src="music/wedding-bg.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-btn" id="musicBtn" title="背景音乐">
+        <div class="music-bars">
+            <span style="height:4px"></span>
+            <span style="height:4px"></span>
+            <span style="height:4px"></span>
+            <span style="height:4px"></span>
+        </div>
+    </button>
 
     <div class="lightbox" id="lightbox">
         <button class="lightbox-close" id="lightboxClose">&#10005;</button>
@@ -757,6 +831,39 @@
             }
         }, { passive: false });
         lightboxWrap.addEventListener('touchend', () => { isDragging = false; });
+
+        /* Background Music */
+        const bgMusic = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        let musicPlaying = false;
+
+        function toggleMusic() {
+            if (musicPlaying) {
+                bgMusic.pause();
+                musicBtn.classList.remove('playing');
+            } else {
+                bgMusic.play().catch(() => {});
+                musicBtn.classList.add('playing');
+            }
+            musicPlaying = !musicPlaying;
+        }
+
+        musicBtn.addEventListener('click', toggleMusic);
+
+        // Try autoplay on first user interaction
+        function tryAutoplay() {
+            if (!musicPlaying) {
+                bgMusic.volume = 0.6;
+                bgMusic.play().then(() => {
+                    musicPlaying = true;
+                    musicBtn.classList.add('playing');
+                }).catch(() => {});
+            }
+            document.removeEventListener('click', tryAutoplay);
+            document.removeEventListener('touchstart', tryAutoplay);
+        }
+        document.addEventListener('click', tryAutoplay);
+        document.addEventListener('touchstart', tryAutoplay);
     </script>
 </body>
 </html>
