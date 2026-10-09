@@ -677,148 +677,21 @@
             background: linear-gradient(180deg, var(--cream) 0%, var(--pink-soft) 100%);
         }
 
-        .rsvp-form {
-            max-width: 320px;
+        .rsvp-iframe-wrap {
+            max-width: 380px;
             margin: 30px auto 0;
-        }
-
-        .rsvp-input {
-            width: 100%;
-            padding: 14px 18px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             border: 1px solid var(--gold-light);
-            border-radius: 8px;
-            font-family: 'Noto Serif SC', serif;
-            font-size: 14px;
-            color: var(--text-dark);
             background: #fff;
-            margin-bottom: 12px;
-            outline: none;
-            transition: border-color 0.3s;
         }
 
-        .rsvp-input:focus {
-            border-color: var(--gold);
-        }
-
-        .rsvp-input::placeholder {
-            color: var(--text-light);
-        }
-
-        .rsvp-radio-group {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 12px;
-        }
-
-        .rsvp-radio {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            color: var(--text-mid);
-        }
-
-        .rsvp-radio input[type="radio"] {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            border: 2px solid var(--gold-light);
-            border-radius: 50%;
-            outline: none;
-            cursor: pointer;
-            position: relative;
-            transition: border-color 0.3s;
-        }
-
-        .rsvp-radio input[type="radio"]:checked {
-            border-color: var(--gold);
-        }
-
-        .rsvp-radio input[type="radio"]:checked::after {
-            content: '';
-            position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 8px;
-            height: 8px;
-            background: var(--gold);
-            border-radius: 50%;
-        }
-
-        .rsvp-btn {
+        .rsvp-iframe-wrap iframe {
             width: 100%;
-            padding: 15px;
-            background: var(--gold);
-            color: #fff;
+            height: 520px;
+            display: block;
             border: none;
-            border-radius: 30px;
-            font-family: 'Noto Serif SC', serif;
-            font-size: 15px;
-            letter-spacing: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 5px;
-        }
-
-        .rsvp-btn:hover {
-            background: #b8954f;
-            transform: translateY(-1px);
-        }
-
-        .rsvp-btn:active {
-            transform: translateY(0);
-        }
-
-        .rsvp-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .rsvp-success {
-            display: none;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .rsvp-success.show {
-            display: block;
-        }
-
-        .rsvp-success-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--gold);
-            color: #fff;
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-        }
-
-        .rsvp-success-text {
-            color: var(--gold);
-            font-size: 15px;
-            letter-spacing: 2px;
-        }
-
-        .rsvp-error {
-            display: none;
-            padding: 12px 20px;
-            text-align: center;
-            color: #c0392b;
-            font-size: 13px;
-            letter-spacing: 1px;
-            margin-top: 10px;
-        }
-
-        .rsvp-error.show {
-            display: block;
         }
 
         .rsvp-note {
@@ -1227,31 +1100,10 @@
         <div class="section-eyebrow reveal">RSVP</div>
         <div class="section-heading reveal">出席确认</div>
         <div class="section-divider reveal"></div>
-        <form class="rsvp-form reveal" id="rsvpForm" action="https://formsubmit.co/1964361408@qq.com" method="POST" novalidate>
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="婚礼 RSVP 新提交">
-            <input type="hidden" name="_template" value="table">
-            <input class="rsvp-input" type="text" name="name" placeholder="您的姓名" required autocomplete="name">
-            <input class="rsvp-input" type="tel" name="phone" placeholder="联系电话" required autocomplete="tel">
-            <div class="rsvp-radio-group">
-                <label class="rsvp-radio">
-                    <input type="radio" name="attending" value="yes" checked>
-                    <span>欣然出席</span>
-                </label>
-                <label class="rsvp-radio">
-                    <input type="radio" name="attending" value="no">
-                    <span>遗憾缺席</span>
-                </label>
-            </div>
-            <input class="rsvp-input" type="number" name="guests" placeholder="出席人数" min="1" max="10" value="1">
-            <button class="rsvp-btn" type="submit">确认提交</button>
-        </form>
-        <div class="rsvp-success" id="rsvpSuccess">
-            <div class="rsvp-success-icon">&#10003;</div>
-            <div class="rsvp-success-text">提交成功，感谢您的回复</div>
+        <div class="rsvp-iframe-wrap reveal">
+            <iframe src="https://vtj2uwwa.jsjform.com/f/yChxen" title="出席确认表单" loading="lazy"></iframe>
         </div>
-        <div class="rsvp-error" id="rsvpError">提交失败，请稍后重试</div>
-        <div class="rsvp-note reveal">提交后我们将收到您的出席信息</div>
+        <div class="rsvp-note reveal">填写后我们将收到您的出席信息</div>
     </section>
 
     <!-- Footer -->
@@ -1362,59 +1214,6 @@
         }
         document.addEventListener('click', tryAutoplay);
         document.addEventListener('touchstart', tryAutoplay);
-
-        /* RSVP Form - FormSubmit */
-        const RSVP_API = 'https://formsubmit.co/1964361408@qq.com';
-
-        const rsvpForm = document.getElementById('rsvpForm');
-        const rsvpSuccess = document.getElementById('rsvpSuccess');
-        const rsvpError = document.getElementById('rsvpError');
-
-        rsvpForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            rsvpError.classList.remove('show');
-
-            const formData = new FormData(rsvpForm);
-            const data = {
-                name: formData.get('name'),
-                phone: formData.get('phone'),
-                attending: formData.get('attending'),
-                guests: formData.get('guests'),
-            };
-
-            if (!data.name || !data.phone) {
-                rsvpError.textContent = '请填写姓名和联系电话';
-                rsvpError.classList.add('show');
-                return;
-            }
-
-            const btn = rsvpForm.querySelector('.rsvp-btn');
-            btn.disabled = true;
-            btn.textContent = '提交中...';
-
-            try {
-                const res = await fetch(RSVP_API, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-                if (res.ok) {
-                    rsvpForm.style.display = 'none';
-                    rsvpSuccess.classList.add('show');
-                } else {
-                    const errData = await res.json().catch(() => ({}));
-                    throw new Error(errData.error || '提交失败');
-                }
-            } catch (err) {
-                rsvpError.textContent = err.message || '提交失败，请稍后重试';
-                rsvpError.classList.add('show');
-                btn.disabled = false;
-                btn.textContent = '确认提交';
-            }
-        });
     </script>
 </body>
 </html>
