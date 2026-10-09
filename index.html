@@ -677,85 +677,27 @@
             background: linear-gradient(180deg, var(--cream) 0%, var(--pink-soft) 100%);
         }
 
-        .rsvp-form {
-            max-width: 320px;
+        .rsvp-iframe-wrap {
+            max-width: 360px;
             margin: 30px auto 0;
-        }
-
-        .rsvp-input {
-            width: 100%;
-            padding: 14px 18px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             border: 1px solid var(--gold-light);
-            border-radius: 8px;
-            font-family: 'Noto Serif SC', serif;
-            font-size: 14px;
-            color: var(--text-dark);
             background: #fff;
-            margin-bottom: 12px;
-            outline: none;
-            transition: border-color 0.3s;
         }
 
-        .rsvp-input:focus {
-            border-color: var(--gold);
-        }
-
-        .rsvp-input::placeholder {
-            color: var(--text-light);
-        }
-
-        .rsvp-select {
+        .rsvp-iframe-wrap iframe {
             width: 100%;
-            padding: 14px 18px;
-            border: 1px solid var(--gold-light);
-            border-radius: 8px;
-            font-family: 'Noto Serif SC', serif;
-            font-size: 14px;
-            color: var(--text-dark);
-            background: #fff;
-            margin-bottom: 12px;
-            outline: none;
-            appearance: none;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c9a96e' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-        }
-
-        .rsvp-btn {
-            width: 100%;
-            padding: 15px;
-            background: var(--gold);
-            color: #fff;
-            border: none;
-            border-radius: 30px;
-            font-family: 'Noto Serif SC', serif;
-            font-size: 15px;
-            letter-spacing: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 5px;
-        }
-
-        .rsvp-btn:hover {
-            background: #b8954f;
-            transform: translateY(-1px);
-        }
-
-        .rsvp-btn:active {
-            transform: translateY(0);
-        }
-
-        .rsvp-success {
-            display: none;
-            padding: 20px;
-            color: var(--gold);
-            font-size: 15px;
-            letter-spacing: 2px;
-        }
-
-        .rsvp-success.show {
+            height: 480px;
             display: block;
+        }
+
+        .rsvp-note {
+            font-size: 12px;
+            color: var(--text-light);
+            letter-spacing: 1px;
+            margin-top: 15px;
         }
 
         /* ===== Footer ===== */
@@ -1157,21 +1099,10 @@
         <div class="section-eyebrow reveal">RSVP</div>
         <div class="section-heading reveal">出席确认</div>
         <div class="section-divider reveal"></div>
-        <form class="rsvp-form reveal" id="rsvpForm" action="https://formspree.io/f/xpwdkqze" method="POST">
-            <input class="rsvp-input" type="text" name="name" id="rsvpName" placeholder="您的姓名" required>
-            <input class="rsvp-input" type="tel" name="phone" id="rsvpPhone" placeholder="联系电话">
-            <select class="rsvp-select" name="attend" id="rsvpAttend" required>
-                <option value="欣然出席" selected>欣然出席</option>
-                <option value="遗憾缺席">遗憾缺席</option>
-            </select>
-            <input class="rsvp-input" type="number" name="count" id="rsvpCount" placeholder="出席人数" min="1" max="10">
-            <input type="hidden" name="_subject" value="婚礼出席确认">
-            <button class="rsvp-btn" id="rsvpBtn" type="submit">确认回复</button>
-        </form>
-        <div class="rsvp-success" id="rsvpSuccess">
-            感谢您的回复 &hearts;<br>
-            <span style="font-size:13px;color:var(--text-light);margin-top:8px;display:inline-block;">期待与您相见</span>
+        <div class="rsvp-iframe-wrap reveal">
+            <iframe id="rsvpIframe" src="https://docs.qq.com/sorry-not-configured" frameborder="0" allowfullscreen></iframe>
         </div>
+        <div class="rsvp-note reveal">填写上方表单确认出席信息</div>
     </section>
 
     <!-- Footer -->
@@ -1249,45 +1180,6 @@
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
         }
-
-        /* RSVP (Formspree) */
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = this;
-            const name = document.getElementById('rsvpName').value.trim();
-            const attend = document.getElementById('rsvpAttend').value;
-            if (!name) {
-                document.getElementById('rsvpName').style.borderColor = '#d4a0a0';
-                document.getElementById('rsvpName').focus();
-                return;
-            }
-            const btn = document.getElementById('rsvpBtn');
-            btn.textContent = '提交中...';
-            btn.disabled = true;
-
-            fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            }).then(function(response) {
-                if (response.ok) {
-                    form.style.display = 'none';
-                    document.getElementById('rsvpSuccess').classList.add('show');
-                } else {
-                    return response.json();
-                }
-            }).then(function(data) {
-                if (data && data.errors) {
-                    btn.textContent = '确认回复';
-                    btn.disabled = false;
-                    alert('提交失败，请稍后重试');
-                }
-            }).catch(function() {
-                btn.textContent = '确认回复';
-                btn.disabled = false;
-                alert('网络异常，请稍后重试');
-            });
-        });
 
         /* Music */
         const bgMusic = document.getElementById('bgMusic');
