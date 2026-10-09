@@ -701,6 +701,52 @@
             margin-top: 15px;
         }
 
+        .rsvp-success {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #fff;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            z-index: 2;
+        }
+
+        .rsvp-success.show {
+            display: flex;
+        }
+
+        .rsvp-success-icon {
+            width: 56px;
+            height: 56px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--gold);
+            font-size: 28px;
+        }
+
+        .rsvp-success-text {
+            font-size: 18px;
+            color: var(--text-dark);
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+
+        .rsvp-success-sub {
+            font-size: 13px;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        .rsvp-iframe-wrap {
+            position: relative;
+        }
+
         /* ===== Footer ===== */
         .footer-section {
             padding: 60px 30px 80px;
@@ -872,7 +918,7 @@
 
     <!-- Cover -->
     <section class="fs-section cover">
-        <div class="cover-photo reveal">
+        <div class="cover-photo reveal" data-src="photos/p1.jpg">
             <img src="photos/p1.jpg" alt="代云海 & 冯馨瑶">
         </div>
         <div class="cover-ornament reveal reveal-delay-1">
@@ -933,7 +979,7 @@
     </section>
 
     <!-- Photo Banner 1 -->
-    <div class="photo-banner reveal">
+    <div class="photo-banner reveal" data-src="photos/p4.jpg">
         <img src="photos/p4.jpg" alt="甜蜜瞬间" loading="lazy">
     </div>
 
@@ -964,7 +1010,7 @@
     </section>
 
     <!-- Photo Banner 2 -->
-    <div class="photo-banner reveal">
+    <div class="photo-banner reveal" data-src="photos/p9.jpg">
         <img src="photos/p9.jpg" alt="教堂相望" loading="lazy">
     </div>
 
@@ -975,7 +1021,7 @@
         <div class="section-divider reveal"></div>
         <div class="couple-photos reveal">
             <div class="couple-photo-wrap">
-                <div class="couple-photo">
+                <div class="couple-photo" data-src="photos/p7.jpg">
                     <img src="photos/p7.jpg" alt="代云海" loading="lazy">
                 </div>
                 <div class="couple-photo-name">代云海</div>
@@ -983,7 +1029,7 @@
             </div>
             <div class="couple-heart">&hearts;</div>
             <div class="couple-photo-wrap">
-                <div class="couple-photo">
+                <div class="couple-photo" data-src="photos/p5.jpg">
                     <img src="photos/p5.jpg" alt="冯馨瑶" loading="lazy">
                 </div>
                 <div class="couple-photo-name">冯馨瑶</div>
@@ -1000,15 +1046,10 @@
             <div class="section-divider reveal"></div>
         </div>
         <div class="gallery-scroll" id="galleryScroll">
-            <div class="gallery-card" data-src="photos/p1.jpg"><img src="photos/p1.jpg" alt="经典合影" loading="lazy"></div>
             <div class="gallery-card" data-src="photos/p2.jpg"><img src="photos/p2.jpg" alt="比心合影" loading="lazy"></div>
             <div class="gallery-card" data-src="photos/p3.jpg"><img src="photos/p3.jpg" alt="花园漫步" loading="lazy"></div>
-            <div class="gallery-card" data-src="photos/p4.jpg"><img src="photos/p4.jpg" alt="俏皮互动" loading="lazy"></div>
-            <div class="gallery-card" data-src="photos/p5.jpg"><img src="photos/p5.jpg" alt="新娘独照" loading="lazy"></div>
             <div class="gallery-card" data-src="photos/p6.jpg"><img src="photos/p6.jpg" alt="韶华拼接" loading="lazy"></div>
-            <div class="gallery-card" data-src="photos/p7.jpg"><img src="photos/p7.jpg" alt="新郎独照" loading="lazy"></div>
             <div class="gallery-card" data-src="photos/p8.jpg"><img src="photos/p8.jpg" alt="甜蜜对视" loading="lazy"></div>
-            <div class="gallery-card" data-src="photos/p9.jpg"><img src="photos/p9.jpg" alt="教堂相望" loading="lazy"></div>
             <div class="gallery-card" data-src="photos/p10.jpg"><img src="photos/p10.jpg" alt="韶华摆台" loading="lazy"></div>
             <div class="gallery-card" data-src="photos/p11.jpg"><img src="photos/p11.jpg" alt="白色蝴蝶结" loading="lazy"></div>
             <div class="gallery-card" data-src="photos/p12.jpg"><img src="photos/p12.jpg" alt="中式礼服" loading="lazy"></div>
@@ -1020,14 +1061,13 @@
             <div class="gallery-card" data-src="photos/p18.jpg"><img src="photos/p18.jpg" alt="传统之美" loading="lazy"></div>
             <div class="gallery-card" data-src="photos/p19.jpg"><img src="photos/p19.jpg" alt="九宫格喜字" loading="lazy"></div>
             <div class="gallery-card" data-src="photos/p20.jpg"><img src="photos/p20.jpg" alt="户外合影" loading="lazy"></div>
-            <div class="gallery-card" data-src="photos/p21.jpg"><img src="photos/p21.jpg" alt="粉色礼服" loading="lazy"></div>
             <div class="gallery-card" data-src="photos/p22.jpg"><img src="photos/p22.jpg" alt="花园挥手" loading="lazy"></div>
         </div>
         <div class="gallery-hint reveal">&larr; 左右滑动查看更多 &rarr;</div>
     </section>
 
     <!-- Photo Banner 3 -->
-    <div class="photo-banner reveal">
+    <div class="photo-banner reveal" data-src="photos/p21.jpg">
         <img src="photos/p21.jpg" alt="粉色浪漫" loading="lazy">
     </div>
 
@@ -1101,7 +1141,12 @@
         <div class="section-heading reveal">出席确认</div>
         <div class="section-divider reveal"></div>
         <div class="rsvp-iframe-wrap reveal">
-            <iframe src="https://vtj2uwwa.jsjform.com/f/yChxen" title="出席确认表单" loading="lazy"></iframe>
+            <iframe id="rsvpIframe" src="https://vtj2uwwa.jsjform.com/f/yChxen" title="出席确认表单" loading="lazy"></iframe>
+            <div class="rsvp-success" id="rsvpSuccess">
+                <div class="rsvp-success-icon">&#10003;</div>
+                <div class="rsvp-success-text">提交成功</div>
+                <div class="rsvp-success-sub">感谢您的出席确认</div>
+            </div>
         </div>
         <div class="rsvp-note reveal">填写后我们将收到您的出席信息</div>
     </section>
@@ -1166,12 +1211,26 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
 
+        function openLightbox(src) {
+            lightboxImg.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
         document.querySelectorAll('.gallery-card').forEach(card => {
             card.addEventListener('click', () => {
-                lightboxImg.src = card.dataset.src || card.querySelector('img').src;
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                openLightbox(card.dataset.src || card.querySelector('img').src);
             });
+        });
+
+        document.querySelectorAll('.cover-photo[data-src], .photo-banner[data-src]').forEach(el => {
+            el.style.cursor = 'pointer';
+            el.addEventListener('click', () => openLightbox(el.dataset.src));
+        });
+
+        document.querySelectorAll('.couple-photo[data-src]').forEach(el => {
+            el.style.cursor = 'pointer';
+            el.addEventListener('click', () => openLightbox(el.dataset.src));
         });
 
         document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
@@ -1200,6 +1259,18 @@
         }
 
         musicBtn.addEventListener('click', toggleMusic);
+
+        /* RSVP iframe submission detection */
+        const rsvpIframe = document.getElementById('rsvpIframe');
+        const rsvpSuccess = document.getElementById('rsvpSuccess');
+        let rsvpLoaded = false;
+
+        rsvpIframe.addEventListener('load', () => {
+            if (rsvpLoaded) {
+                rsvpSuccess.classList.add('show');
+            }
+            rsvpLoaded = true;
+        });
 
         function tryAutoplay() {
             if (!musicPlaying) {
