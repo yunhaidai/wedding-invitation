@@ -1227,7 +1227,10 @@
         <div class="section-eyebrow reveal">RSVP</div>
         <div class="section-heading reveal">出席确认</div>
         <div class="section-divider reveal"></div>
-        <form class="rsvp-form reveal" id="rsvpForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <form class="rsvp-form reveal" id="rsvpForm" action="https://formsubmit.co/1964361408@qq.com" method="POST" novalidate>
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="婚礼 RSVP 新提交">
+            <input type="hidden" name="_template" value="table">
             <input class="rsvp-input" type="text" name="name" placeholder="您的姓名" required autocomplete="name">
             <input class="rsvp-input" type="tel" name="phone" placeholder="联系电话" required autocomplete="tel">
             <div class="rsvp-radio-group">
@@ -1360,8 +1363,8 @@
         document.addEventListener('click', tryAutoplay);
         document.addEventListener('touchstart', tryAutoplay);
 
-        /* RSVP Form - Formspree */
-        const RSVP_API = 'https://formspree.io/f/YOUR_FORM_ID';
+        /* RSVP Form - FormSubmit */
+        const RSVP_API = 'https://formsubmit.co/1964361408@qq.com';
 
         const rsvpForm = document.getElementById('rsvpForm');
         const rsvpSuccess = document.getElementById('rsvpSuccess');
