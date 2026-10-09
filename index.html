@@ -254,6 +254,95 @@
             margin: 0 auto;
         }
 
+        /* ===== Wedding Letter (婚书) ===== */
+        .wedding-letter {
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .letter-border {
+            border: 2px solid var(--gold);
+            border-radius: 4px;
+            padding: 4px;
+        }
+
+        .letter-inner {
+            border: 1px solid var(--gold-light);
+            border-radius: 2px;
+            padding: 35px 25px;
+            background: #fffef9;
+        }
+
+        .letter-preamble {
+            font-family: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+            font-size: 18px;
+            color: var(--gold);
+            letter-spacing: 6px;
+            margin-bottom: 18px;
+        }
+
+        .letter-body {
+            font-family: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+            font-size: 20px;
+            color: var(--text-dark);
+            letter-spacing: 3px;
+            line-height: 2;
+            margin-bottom: 5px;
+        }
+
+        .letter-divider {
+            width: 30px;
+            height: 1px;
+            background: var(--gold-light);
+            margin: 18px auto;
+        }
+
+        .letter-date {
+            font-size: 14px;
+            line-height: 2.2;
+            color: var(--text-mid);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .letter-names {
+            font-size: 17px;
+            line-height: 2;
+            color: var(--text-dark);
+            letter-spacing: 2px;
+        }
+
+        .letter-names strong {
+            font-family: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--text-dark);
+        }
+
+        .letter-ceremony {
+            font-family: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+            font-size: 20px;
+            color: var(--text-dark);
+            letter-spacing: 4px;
+            margin: 5px 0;
+        }
+
+        .letter-closing {
+            font-size: 14px;
+            line-height: 2.2;
+            color: var(--text-mid);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .letter-seal {
+            font-family: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+            font-size: 16px;
+            color: var(--gold);
+            letter-spacing: 8px;
+            margin-top: 18px;
+        }
+
         /* ===== Photo Banner ===== */
         .photo-banner {
             width: 100%;
@@ -286,41 +375,42 @@
             background: var(--cream);
         }
 
-        .countdown-grid {
+        .countdown-cards {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 14px;
             margin-top: 30px;
         }
 
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .cd-card {
+            width: 72px;
+            padding: 18px 0 14px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid rgba(201,169,110,0.15);
         }
 
-        .countdown-num {
+        .cd-card-num {
             font-family: 'Playfair Display', serif;
-            font-size: 42px;
+            font-size: 36px;
             font-weight: 700;
             color: var(--text-dark);
             line-height: 1;
-            min-width: 60px;
         }
 
-        .countdown-label {
+        .cd-card-label {
             font-size: 11px;
-            color: var(--text-light);
+            color: var(--gold);
             letter-spacing: 2px;
             margin-top: 8px;
         }
 
-        .countdown-sep {
-            font-family: 'Playfair Display', serif;
-            font-size: 30px;
-            color: var(--gold-light);
-            align-self: flex-start;
-            margin-top: 5px;
+        .countdown-date {
+            margin-top: 22px;
+            font-size: 13px;
+            color: var(--text-light);
+            letter-spacing: 3px;
         }
 
         /* ===== Photo Gallery (Horizontal Scroll) ===== */
@@ -499,6 +589,85 @@
         .map-link:hover {
             background: var(--gold);
             color: #fff;
+        }
+
+        /* ===== Mini Calendar ===== */
+        .mini-calendar {
+            max-width: 260px;
+            margin: 0 auto;
+            padding: 20px 15px 15px;
+            background: #fffef9;
+            border-radius: 12px;
+            border: 1px solid var(--gold-light);
+        }
+
+        .cal-header {
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .cal-month {
+            font-family: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+            font-size: 18px;
+            color: var(--text-dark);
+            letter-spacing: 3px;
+        }
+
+        .cal-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(201,169,110,0.15);
+        }
+
+        .cal-weekdays span {
+            font-size: 11px;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        .cal-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            gap: 4px 0;
+        }
+
+        .cal-days span {
+            font-size: 13px;
+            color: var(--text-dark);
+            padding: 5px 0;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .cal-days .cal-muted {
+            color: var(--text-light);
+            opacity: 0.4;
+        }
+
+        .cal-days .cal-today {
+            background: var(--gold);
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(201,169,110,0.4);
+        }
+
+        .cal-note {
+            text-align: center;
+            font-size: 12px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(201,169,110,0.15);
         }
 
         /* ===== RSVP Section ===== */
@@ -784,19 +953,39 @@
         </div>
     </section>
 
-    <!-- Invitation Text -->
+    <!-- Invitation Text (婚书风格) -->
     <section class="invite-section">
-        <div class="section-eyebrow reveal">INVITATION</div>
-        <div class="section-heading reveal">诚邀莅临</div>
+        <div class="section-eyebrow reveal">WEDDING LETTER</div>
+        <div class="section-heading reveal">婚 书</div>
         <div class="section-divider reveal"></div>
-        <div class="invite-text reveal">
-            谨定于<br>
-            公历二〇二六年十一月十一日<br>
-            农历丙午年十月初三<br>
-            为新郎 代云海 新娘 冯馨瑶<br>
-            举行结婚典礼<br><br>
-            恭请光临<br>
-            共鉴此情 同贺佳缘
+        <div class="wedding-letter reveal">
+            <div class="letter-border">
+                <div class="letter-inner">
+                    <p class="letter-preamble">盖闻</p>
+                    <p class="letter-body">
+                        两情相悦 缘定三生<br>
+                        佳偶天成 琴瑟和鸣
+                    </p>
+                    <div class="letter-divider"></div>
+                    <p class="letter-date">
+                        兹定于<br>
+                        公元二〇二六年十一月十一日<br>
+                        农历丙午年十月初三 星期三
+                    </p>
+                    <div class="letter-divider"></div>
+                    <p class="letter-names">
+                        新郎 <strong>代云海</strong><br>
+                        新娘 <strong>冯馨瑶</strong>
+                    </p>
+                    <p class="letter-ceremony">举行结婚典礼</p>
+                    <div class="letter-divider"></div>
+                    <p class="letter-closing">
+                        届时恭请光临<br>
+                        共鉴此情 同贺佳缘
+                    </p>
+                    <p class="letter-seal">此约</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -810,27 +999,25 @@
         <div class="section-eyebrow reveal">COUNTDOWN</div>
         <div class="section-heading reveal">距离婚礼还有</div>
         <div class="section-divider reveal"></div>
-        <div class="countdown-grid reveal">
-            <div class="countdown-item">
-                <div class="countdown-num" id="cdDays">00</div>
-                <div class="countdown-label">天</div>
+        <div class="countdown-cards reveal">
+            <div class="cd-card">
+                <div class="cd-card-num" id="cdDays">00</div>
+                <div class="cd-card-label">天</div>
             </div>
-            <div class="countdown-sep">:</div>
-            <div class="countdown-item">
-                <div class="countdown-num" id="cdHours">00</div>
-                <div class="countdown-label">时</div>
+            <div class="cd-card">
+                <div class="cd-card-num" id="cdHours">00</div>
+                <div class="cd-card-label">时</div>
             </div>
-            <div class="countdown-sep">:</div>
-            <div class="countdown-item">
-                <div class="countdown-num" id="cdMins">00</div>
-                <div class="countdown-label">分</div>
+            <div class="cd-card">
+                <div class="cd-card-num" id="cdMins">00</div>
+                <div class="cd-card-label">分</div>
             </div>
-            <div class="countdown-sep">:</div>
-            <div class="countdown-item">
-                <div class="countdown-num" id="cdSecs">00</div>
-                <div class="countdown-label">秒</div>
+            <div class="cd-card">
+                <div class="cd-card-num" id="cdSecs">00</div>
+                <div class="cd-card-label">秒</div>
             </div>
         </div>
+        <div class="countdown-date reveal">2026 . 11 . 11 星期三</div>
     </section>
 
     <!-- Photo Banner 2 -->
@@ -907,12 +1094,48 @@
         <div class="section-heading reveal">婚礼详情</div>
         <div class="section-divider reveal"></div>
         <div class="details-card reveal">
-            <div class="detail-row">
-                <div class="detail-row-label">日期</div>
-                <div class="detail-row-value">2026年11月11日</div>
-                <div class="detail-row-sub">星期三 · 农历丙午年十月初三</div>
+            <div class="mini-calendar">
+                <div class="cal-header">
+                    <span class="cal-month">2026年11月</span>
+                </div>
+                <div class="cal-weekdays">
+                    <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+                </div>
+                <div class="cal-days">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                    <span class="cal-today">11</span>
+                    <span>12</span>
+                    <span>13</span>
+                    <span>14</span>
+                    <span>15</span>
+                    <span>16</span>
+                    <span>17</span>
+                    <span>18</span>
+                    <span>19</span>
+                    <span>20</span>
+                    <span>21</span>
+                    <span>22</span>
+                    <span>23</span>
+                    <span>24</span>
+                    <span>25</span>
+                    <span>26</span>
+                    <span>27</span>
+                    <span>28</span>
+                    <span>29</span>
+                    <span>30</span>
+                </div>
+                <div class="cal-note">星期三 · 农历十月初三</div>
             </div>
-            <div class="detail-divider"></div>
+            <div class="detail-divider" style="margin:25px auto"></div>
             <div class="detail-row">
                 <div class="detail-row-label">地点</div>
                 <div class="detail-row-value">大众酒家</div>
@@ -934,17 +1157,17 @@
         <div class="section-eyebrow reveal">RSVP</div>
         <div class="section-heading reveal">出席确认</div>
         <div class="section-divider reveal"></div>
-        <div class="rsvp-form reveal" id="rsvpForm">
-            <input class="rsvp-input" type="text" id="rsvpName" placeholder="您的姓名" required>
-            <input class="rsvp-input" type="tel" id="rsvpPhone" placeholder="联系电话">
-            <select class="rsvp-select" id="rsvpAttend">
-                <option value="">是否出席</option>
-                <option value="yes">欣然出席</option>
-                <option value="no">遗憾缺席</option>
+        <form class="rsvp-form reveal" id="rsvpForm" action="https://formspree.io/f/xpwdkqze" method="POST">
+            <input class="rsvp-input" type="text" name="name" id="rsvpName" placeholder="您的姓名" required>
+            <input class="rsvp-input" type="tel" name="phone" id="rsvpPhone" placeholder="联系电话">
+            <select class="rsvp-select" name="attend" id="rsvpAttend" required>
+                <option value="欣然出席" selected>欣然出席</option>
+                <option value="遗憾缺席">遗憾缺席</option>
             </select>
-            <input class="rsvp-input" type="number" id="rsvpCount" placeholder="出席人数" min="1" max="10">
-            <button class="rsvp-btn" id="rsvpBtn" type="button">确认回复</button>
-        </div>
+            <input class="rsvp-input" type="number" name="count" id="rsvpCount" placeholder="出席人数" min="1" max="10">
+            <input type="hidden" name="_subject" value="婚礼出席确认">
+            <button class="rsvp-btn" id="rsvpBtn" type="submit">确认回复</button>
+        </form>
         <div class="rsvp-success" id="rsvpSuccess">
             感谢您的回复 &hearts;<br>
             <span style="font-size:13px;color:var(--text-light);margin-top:8px;display:inline-block;">期待与您相见</span>
@@ -1027,8 +1250,10 @@
             document.body.style.overflow = '';
         }
 
-        /* RSVP */
-        document.getElementById('rsvpBtn').addEventListener('click', () => {
+        /* RSVP (Formspree) */
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
             const name = document.getElementById('rsvpName').value.trim();
             const attend = document.getElementById('rsvpAttend').value;
             if (!name) {
@@ -1036,12 +1261,32 @@
                 document.getElementById('rsvpName').focus();
                 return;
             }
-            if (!attend) {
-                document.getElementById('rsvpAttend').style.borderColor = '#d4a0a0';
-                return;
-            }
-            document.getElementById('rsvpForm').style.display = 'none';
-            document.getElementById('rsvpSuccess').classList.add('show');
+            const btn = document.getElementById('rsvpBtn');
+            btn.textContent = '提交中...';
+            btn.disabled = true;
+
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(function(response) {
+                if (response.ok) {
+                    form.style.display = 'none';
+                    document.getElementById('rsvpSuccess').classList.add('show');
+                } else {
+                    return response.json();
+                }
+            }).then(function(data) {
+                if (data && data.errors) {
+                    btn.textContent = '确认回复';
+                    btn.disabled = false;
+                    alert('提交失败，请稍后重试');
+                }
+            }).catch(function() {
+                btn.textContent = '确认回复';
+                btn.disabled = false;
+                alert('网络异常，请稍后重试');
+            });
         });
 
         /* Music */
