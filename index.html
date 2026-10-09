@@ -1227,7 +1227,7 @@
         <div class="section-eyebrow reveal">RSVP</div>
         <div class="section-heading reveal">出席确认</div>
         <div class="section-divider reveal"></div>
-        <form class="rsvp-form reveal" id="rsvpForm" novalidate>
+        <form class="rsvp-form reveal" id="rsvpForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
             <input class="rsvp-input" type="text" name="name" placeholder="您的姓名" required autocomplete="name">
             <input class="rsvp-input" type="tel" name="phone" placeholder="联系电话" required autocomplete="tel">
             <div class="rsvp-radio-group">
@@ -1360,8 +1360,8 @@
         document.addEventListener('click', tryAutoplay);
         document.addEventListener('touchstart', tryAutoplay);
 
-        /* RSVP Form */
-        const RSVP_API = 'https://wedding-rsvp.yunhaidai.workers.dev';
+        /* RSVP Form - Formspree */
+        const RSVP_API = 'https://formspree.io/f/YOUR_FORM_ID';
 
         const rsvpForm = document.getElementById('rsvpForm');
         const rsvpSuccess = document.getElementById('rsvpSuccess');
@@ -1390,17 +1390,20 @@
             btn.textContent = '提交中...';
 
             try {
-                const res = await fetch(RSVP_API + '/submit', {
+                const res = await fetch(RSVP_API, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
                     body: JSON.stringify(data),
                 });
-                const result = await res.json();
-                if (result.success) {
+                if (res.ok) {
                     rsvpForm.style.display = 'none';
                     rsvpSuccess.classList.add('show');
                 } else {
-                    throw new Error(result.error || '提交失败');
+                    const errData = await res.json().catch(() => ({}));
+                    throw new Error(errData.error || '提交失败');
                 }
             } catch (err) {
                 rsvpError.textContent = err.message || '提交失败，请稍后重试';
